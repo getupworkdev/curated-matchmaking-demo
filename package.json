@@ -1,0 +1,24 @@
+{
+  "name": "curated-matchmaking-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Curated matchmaking backend demo: Supabase Postgres schema with RLS, coin ledger, concierge review flow. Runs in the browser on PGlite.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p . && vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.11",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}
