@@ -26,8 +26,9 @@ export class Db {
   private queue: Promise<unknown> = Promise.resolve();
   private constructor(readonly pg: PGlite) {}
 
-  static async create(): Promise<Db> {
-    const pg = await PGlite.create();
+  /** fsBundle: optional Postgres data bundle, for hosts that can't serve PGlite's default .data file. */
+  static async create(opts: { fsBundle?: Blob } = {}): Promise<Db> {
+    const pg = await PGlite.create(opts.fsBundle ? { fsBundle: opts.fsBundle } : {});
     await pg.exec(schema);
     await pg.exec(seed);
     return new Db(pg);

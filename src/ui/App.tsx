@@ -23,7 +23,7 @@ export function App() {
 
   const boot = useCallback(() => {
     setDb(null);
-    Db.create().then(setDb, (e) => setBootError(errorText(e)));
+    loadBundle().then((fsBundle) => Db.create({ fsBundle })).then(setDb, (e) => setBootError(errorText(e)));
   }, []);
   useEffect(boot, [boot]);
 
@@ -84,6 +84,13 @@ export function App() {
       </footer>
     </div>
   );
+}
+
+// Some static hosts only serve web file types, so the build also ships PGlite's data bundle as pglite-fs.wasm.
+let bundle: Promise<Blob | undefined> | null = null;
+function loadBundle() {
+  bundle ??= fetch('./pglite-fs.wasm').then((r) => (r.ok ? r.blob() : undefined), () => undefined);
+  return bundle;
 }
 
 type Act = (fn: () => Promise<unknown>, ok?: string) => Promise<void>;
