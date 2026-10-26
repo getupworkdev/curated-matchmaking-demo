@@ -4,7 +4,9 @@ A working slice of a concierge-led matchmaking app backend: Supabase Postgres sc
 
 The brand ("Kindred Circle") and every person in the seed data are fictional.
 
-**Try it in the browser:** the demo runs a real Postgres (PGlite, compiled to WebAssembly) inside the tab, loaded with the same migration that deploys to Supabase. Switching user changes the Postgres role and `auth.uid()`, so what each person sees is decided by RLS, not by the UI.
+**Live demo: https://getupworkdev.github.io/curated-matchmaking-demo/** (nothing to install).
+
+**How it works in the browser:** the demo runs a real Postgres (PGlite, compiled to WebAssembly) inside the tab, loaded with the same migration that deploys to Supabase. Switching user changes the Postgres role and `auth.uid()`, so what each person sees is decided by RLS, not by the UI.
 
 ```bash
 npm install
